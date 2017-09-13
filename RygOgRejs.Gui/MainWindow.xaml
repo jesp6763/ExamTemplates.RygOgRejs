@@ -1,0 +1,167 @@
+﻿<!-- Author...........: Mads Mikkel Rasmussen
+     C#/XAML version..: 7.0
+     .NET version.....: 4.6.2 
+     Purpose..........: Template for exam                                                       -->
+<Window x:Class="RygOgRejs.Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RygOgRejs.Gui"
+        mc:Ignorable="d"
+        Title="Ryg Og Rejs"
+        Height="500"
+        Width="900">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top"
+                  Height="25">
+                <MenuItem Header="Filer">
+                    <MenuItem Click="OnMenuFilesClose_Click"
+                              Header="Luk" />
+                </MenuItem>
+                <MenuItem Header="Hjælp">
+                    <MenuItem Click="MenuHelpAbout_Click"
+                              Header="Om" />
+                </MenuItem>
+            </Menu>
+            <StatusBar x:Name="statusBar"
+                       Background="RoyalBlue"
+                       DockPanel.Dock="Bottom"
+                       Height="30">
+                <Label x:Name="labelStatusBar"
+                       Content="Venter på vejr data..."
+                       Foreground="White"
+                       Height="27" />
+            </StatusBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="300" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="225" />
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Menu"
+                              Margin="5">
+                        <StackPanel Grid.Row="0"
+                                    Margin="5">
+                            <Button x:Name="buttonJourneys"
+                                    Content="Rejser"
+                                    Height="35"
+                                    Click="ButtonJourneys_Click" />
+                            <Button x:Name="buttonTransactions"
+                                    Content="Transaktioner"
+                                    Height="35" />
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1"
+                              Header="Dagens totaler"
+                              Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                                <RowDefinition Height="27" />
+                            </Grid.RowDefinitions>
+                            <Label Content="Solgte Rejser:"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="- heraf 1. kl.:"
+                                   Grid.Row="1"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="- heraf std.:"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="Rejsende:"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="- heraf voksne:"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="- heraf børn:"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label Content="Dagens salg:"
+                                   Grid.Row="6"
+                                   Grid.Column="0"
+                                   HorizontalContentAlignment="Right" />
+                            <Label x:Name="labelTotalJourneys"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalFirstClassJourneys"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalStandardJourneys"
+                                   Grid.Column="1"
+                                   Grid.Row="2"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalPassengers"
+                                   Grid.Column="1"
+                                   Grid.Row="3"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalAdults"
+                                   Grid.Column="1"
+                                   Grid.Row="4"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalChildren"
+                                   Grid.Column="1"
+                                   Grid.Row="5"
+                                   Content="0"
+                                   HorizontalContentAlignment="Left" />
+                            <Label x:Name="labelTotalSales"
+                                   Grid.Column="1"
+                                   Grid.Row="6"
+                                   Content="kr. 0,00"
+                                   HorizontalContentAlignment="Left" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+                <GridSplitter Grid.Column="1"
+                              HorizontalAlignment="Stretch" />
+                <GroupBox x:Name="groupBoxCentre"
+                          Grid.Column="2"
+                          Header="Liste"
+                          Margin="5">
+                    <UserControl x:Name="userControlCentre"
+                                 Margin="5" />
+                </GroupBox>
+                <GridSplitter Grid.Column="3"
+                              HorizontalAlignment="Stretch" />
+                <GroupBox x:Name="groupBoxRight"
+                          Grid.Column="4"
+                          Header="Data"
+                          Margin="5">
+                    <UserControl x:Name="userControlRight"
+                                 Margin="5" />
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
