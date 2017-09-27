@@ -31,7 +31,7 @@ namespace RygOgRejs.Entities
         /// <param name="amount">The paid amount</param>
         /// <param name="jouney">The journey</param>
         /// <param name="payer">The payer</param>
-        public Transaction(decimal amount, Journey jouney, Payer payer)
+        public Transaction(decimal amount, Journey journey, Payer payer)
         {
             this.amount = amount;
             this.journey = journey;
