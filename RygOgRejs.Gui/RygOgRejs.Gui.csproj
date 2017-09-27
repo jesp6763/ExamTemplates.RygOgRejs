@@ -102,5 +102,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RygOgRejs.DataAccess\RygOgRejs.DataAccess.csproj">
+      <Project>{0f3148f3-33f0-4c7d-b451-3e19ca05e310}</Project>
+      <Name>RygOgRejs.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RygOgRejs.Entities\RygOgRejs.Entities.csproj">
+      <Project>{68342e30-660f-47a9-8a2e-d17412f05230}</Project>
+      <Name>RygOgRejs.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RygOgRejs.Services\RygOgRejs.Services.csproj">
+      <Project>{4ed86712-4bb9-4bee-91e5-68dccd4006f9}</Project>
+      <Name>RygOgRejs.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
