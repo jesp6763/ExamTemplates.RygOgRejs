@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Entities
 {
-    public class Class1
+    public class Transaction
     {
     }
 }
