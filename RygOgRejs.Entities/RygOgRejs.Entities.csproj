@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Destination.cs" />
+    <Compile Include="IPersistable.cs" />
     <Compile Include="Journey.cs" />
     <Compile Include="Payer.cs" />
     <Compile Include="PriceDetails.cs" />
