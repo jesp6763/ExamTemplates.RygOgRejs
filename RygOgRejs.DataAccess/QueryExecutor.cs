@@ -8,10 +8,19 @@ using System.Data.SqlClient;
 
 namespace RygOgRejs.DataAccess
 {
+    /// <summary>
+    /// Represents a query executor
+    /// </summary>
     public class QueryExecutor
     {
+        /// <summary>
+        /// The connection string
+        /// </summary>
         private string connectionString;
         
+        /// <summary>
+        /// Initializes a new instance of the QueryExecutor class
+        /// </summary>
         public QueryExecutor()
         {
             connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RygOgRejs";
