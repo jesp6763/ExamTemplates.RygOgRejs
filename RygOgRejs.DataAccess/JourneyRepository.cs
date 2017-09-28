@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using RygOgRejs.Entities;
+using RygOgRejs.Entities.Enums;
 
 namespace RygOgRejs.DataAccess
 {
@@ -18,7 +19,15 @@ namespace RygOgRejs.DataAccess
         /// <returns>A list of journeys</returns>
         public List<Journey> GetAll()
         {
-            return new List<Journey>();
+            DataSet journeys = executor.Execute("SELECT * FROM dbo.Journeys");
+            List<Journey> journeyList = new List<Journey>();
+            for(int i = 0; i < journeys.Tables[0].Rows.Count; i++)
+            {
+                DataRow row = journeys.Tables[0].Rows[i];
+                journeyList.Add(new Journey(row.Field<Destination>("Destination"), row.Field<DateTime>("DepartureTime"), row.Field<bool>("IsFirstClass"), row.Field<int>("Adults"), row.Field<int>("Children"), row.Field<double>("LuggageAmount")));
+            }
+
+            return journeyList;
         }
 
         /// <summary>
@@ -28,7 +37,9 @@ namespace RygOgRejs.DataAccess
         /// <returns>A journey</returns>
         public Journey GetJourneyBy(string payerFullName)
         {
-            return null;
+            DataSet dataSet = executor.Execute($"SELECT * FROM dbo.Payers WHERE Firstname + ' ' + Lastname LIKE '{payerFullName}%'");
+            DataRow row = dataSet.Tables[0].Rows[0];
+            return new Journey(row.Field<Destination>("Destination"), row.Field<DateTime>("DepartureTime"), row.Field<bool>("IsFirstClass"), row.Field<int>("Adults"), row.Field<int>("Children"), row.Field<double>("LuggageAmount"));
         }
     }
 }
