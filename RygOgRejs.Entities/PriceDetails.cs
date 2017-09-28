@@ -46,7 +46,7 @@ namespace RygOgRejs.Entities
             totalPrice = childDestinationPrice + adultDestinationPrice + (decimal)(extraLuggagePrice * extraLuggage);
             if(isFirstClass)
             {
-                totalPrice += 1699;
+                totalPrice += 1699; // Increase total price by 1699 (The first class price)
             }
         }
 
