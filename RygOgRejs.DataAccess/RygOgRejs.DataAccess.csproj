@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RygOgRejs.Entities\RygOgRejs.Entities.csproj">
