@@ -52,7 +52,7 @@ namespace RygOgRejs.Entities
 
         public decimal GetTaxAmount()
         {
-            return taxRate;
+            return GetTotalWithTax() - GetTotalWithoutTax();
         }
 
         public decimal GetTotalWithoutTax()
