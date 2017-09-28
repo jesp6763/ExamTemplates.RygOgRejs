@@ -9,7 +9,7 @@ namespace RygOgRejs.Entities
     /// <summary>
     /// Represents a journey
     /// </summary>
-    public class Journey
+    public class Journey : IPersistable
     {
         /// <summary>
         /// The amount of adults
@@ -39,6 +39,8 @@ namespace RygOgRejs.Entities
         /// How much luggage in kg
         /// </summary>
         protected double luggageAmount;
+
+        public int Id { get; }
 
         /// <summary>
         /// Initializes a new instance of the Journey class

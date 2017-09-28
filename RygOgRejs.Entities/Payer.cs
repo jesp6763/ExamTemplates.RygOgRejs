@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Entities
 {
-    public class Payer
+    public class Payer : IPersistable
     {
         /// <summary>
         /// The payer's firstname
@@ -33,5 +33,7 @@ namespace RygOgRejs.Entities
             this.lastname = lastname;
             this.ssn = ssn;
         }
+
+        public int Id { get; }
     }
 }
