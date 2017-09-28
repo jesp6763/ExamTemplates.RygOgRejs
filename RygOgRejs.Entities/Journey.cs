@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using RygOgRejs.Entities.Enums;
 
 namespace RygOgRejs.Entities
 {
@@ -15,6 +15,39 @@ namespace RygOgRejs.Entities
         protected bool isFirstClass;
         protected double luggageAmount;
 
+        public Journey(Destination destination, DateTime departureDate, bool isFirstClass, int adults, int children, double luggageAmount)
+        {
 
+        }
+
+        public void AddLuggage(double amount)
+        {
+
+        }
+
+        public void RemoveLuggage(double amount)
+        {
+
+        }
+
+        public void AddPersons(int adults)
+        {
+
+        }
+
+        public void RemovePersons(int adults, int children)
+        {
+
+        }
+
+        public void ChangeDestinationTo(Destination newDestination)
+        {
+
+        }
+
+        public decimal GetCurrentTotal()
+        {
+            return 0;
+        }
     }
 }
