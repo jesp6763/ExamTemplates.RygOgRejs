@@ -17,13 +17,14 @@ namespace RygOgRejs.DataAccess
         /// The connection string
         /// </summary>
         private string connectionString;
-        
+
         /// <summary>
         /// Initializes a new instance of the QueryExecutor class
         /// </summary>
         public QueryExecutor()
         {
             connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=RygOgRejs";
+
         }
 
         /// <summary>
@@ -33,7 +34,13 @@ namespace RygOgRejs.DataAccess
         /// <returns></returns>
         public DataSet Execute(string sqlQuery)
         {
-            return null;
+            using(SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using(SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    return Execute(command);
+                }
+            }
         }
 
         /// <summary>
@@ -43,7 +50,23 @@ namespace RygOgRejs.DataAccess
         /// <returns></returns>
         public DataSet Execute(SqlCommand command)
         {
-            return null;
+            SqlConnection connection = null;
+            if(command.Connection == null)
+            {
+                connection = new SqlConnection(connectionString);
+                command.Connection = connection;
+            }
+
+            using(command)
+            {
+                using(SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    return dataSet;
+                }
+            }
+
         }
     }
 }
