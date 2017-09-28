@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Entities
 {
-    public class Transaction
+    public class Transaction : IPersistable
     {
         /// <summary>
         /// The paid amount
@@ -37,5 +37,7 @@ namespace RygOgRejs.Entities
             this.journey = journey;
             this.payer = payer;
         }
+
+        public int Id { get; }
     }
 }
