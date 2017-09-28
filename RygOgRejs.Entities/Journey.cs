@@ -57,6 +57,7 @@ namespace RygOgRejs.Entities
             this.adults = adults;
             this.children = children;
             this.luggageAmount = luggageAmount;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -65,7 +66,8 @@ namespace RygOgRejs.Entities
         /// <param name="amount">The amount of luggage in kg</param>
         public void AddLuggage(double amount)
         {
-
+            luggageAmount += amount;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -74,7 +76,8 @@ namespace RygOgRejs.Entities
         /// <param name="amount">The amount of luggage in kg to remove</param>
         public void RemoveLuggage(double amount)
         {
-
+            luggageAmount -= amount;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -84,7 +87,9 @@ namespace RygOgRejs.Entities
         /// <param name="children">How many children to add</param>
         public void AddPersons(int adults, int children)
         {
-
+            this.adults += adults;
+            this.children += children;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -94,7 +99,9 @@ namespace RygOgRejs.Entities
         /// <param name="children">How many children to remove</param>
         public void RemovePersons(int adults, int children)
         {
-
+            this.adults -= adults;
+            this.children -= children;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -103,7 +110,8 @@ namespace RygOgRejs.Entities
         /// <param name="newDestination">The new destination</param>
         public void ChangeDestinationTo(Destination newDestination)
         {
-            
+            destination = newDestination;
+            RefreshPriceDetails();
         }
 
         /// <summary>
@@ -112,7 +120,13 @@ namespace RygOgRejs.Entities
         /// <returns>The current total cost</returns>
         public decimal GetCurrentTotal()
         {
-            return 0;
+            return currentPriceDetails.GetTotalWithTax();
+        }
+
+        private void RefreshPriceDetails()
+        {
+            double extraLuggage = luggageAmount > 25 ? luggageAmount : 0;
+            currentPriceDetails = new PriceDetails(destination, adults, children, isFirstClass, extraLuggage);
         }
     }
 }
