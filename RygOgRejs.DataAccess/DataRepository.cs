@@ -1,16 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace RygOgRejs.DataAccess
 {
     /// <summary>
     /// Represents a data repository
     /// </summary>
-    public class DataRepository
+    public abstract class DataRepository
     {
+        /// <summary>
+        /// The query executor
+        /// </summary>
         protected QueryExecutor executor;
+
+        /// <summary>
+        /// Initializes a new instance of the DataRepository class
+        /// </summary>
+        public DataRepository()
+        {
+            executor = new QueryExecutor();
+        }
     }
 }
