@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RygOgRejs.Services
 {
     public class TemperatureService
     {
+        public string GetTemperature(string destination)
+        {
+            return string.Empty;
+            //return $"{destinationsTemp} C";
+        }
     }
 }
