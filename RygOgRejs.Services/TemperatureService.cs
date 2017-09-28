@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Services
 {
-    public class Class1
+    public class TemperatureService
     {
     }
 }
