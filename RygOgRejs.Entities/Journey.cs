@@ -40,7 +40,6 @@ namespace RygOgRejs.Entities
         /// </summary>
         protected double luggageAmount;
 
-        public int Id { get; }
 
         /// <summary>
         /// Initializes a new instance of the Journey class
@@ -61,6 +60,11 @@ namespace RygOgRejs.Entities
             this.luggageAmount = luggageAmount;
             RefreshPriceDetails();
         }
+
+        /// <summary>
+        /// Gets the id
+        /// </summary>
+        public int Id { get; }
 
         /// <summary>
         /// Adds luggage
