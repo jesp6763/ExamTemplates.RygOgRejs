@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RygOgRejs.DataAccess", "Ryg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RygOgRejs.Entities", "RygOgRejs.Entities\RygOgRejs.Entities.csproj", "{68342E30-660F-47A9-8A2E-D17412F05230}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RygOgRejs.Test", "RygOgRejs.Test\RygOgRejs.Test.csproj", "{9D8DAA33-7926-4B14-99E0-9E3AC33C1C1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{68342E30-660F-47A9-8A2E-D17412F05230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68342E30-660F-47A9-8A2E-D17412F05230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68342E30-660F-47A9-8A2E-D17412F05230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D8DAA33-7926-4B14-99E0-9E3AC33C1C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8DAA33-7926-4B14-99E0-9E3AC33C1C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8DAA33-7926-4B14-99E0-9E3AC33C1C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8DAA33-7926-4B14-99E0-9E3AC33C1C1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
