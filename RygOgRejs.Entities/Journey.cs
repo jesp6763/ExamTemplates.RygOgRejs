@@ -62,6 +62,27 @@ namespace RygOgRejs.Entities
         }
 
         /// <summary>
+        /// Initializes a new instance of the Journey class
+        /// </summary>
+        /// <param name="destination">The desired destination</param>
+        /// <param name="departureDate">The departure date</param>
+        /// <param name="isFirstClass">If it is first class</param>
+        /// <param name="adults">The amount of adults</param>
+        /// <param name="children">The amount of children</param>
+        /// <param name="luggageAmount">The luggage amount in kg</param>
+        public Journey(int id, Destination destination, DateTime departureDate, bool isFirstClass, int adults, int children, double luggageAmount)
+        {
+            Id = id;
+            this.destination = destination;
+            this.departureDate = departureDate;
+            this.isFirstClass = isFirstClass;
+            this.adults = adults;
+            this.children = children;
+            this.luggageAmount = luggageAmount;
+            RefreshPriceDetails();
+        }
+
+        /// <summary>
         /// Gets the id
         /// </summary>
         public int Id { get; }

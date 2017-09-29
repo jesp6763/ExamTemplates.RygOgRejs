@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RygOgRejs.Entities;
+using RygOgRejs.DataAccess;
 
 namespace RygOgRejs.Gui
 {
@@ -21,10 +22,19 @@ namespace RygOgRejs.Gui
     /// </summary>
     public partial class DataViewJourneys: UserControl
     {
+        public List<Journey> Journeys { get; private set; }
+
         public DataViewJourneys(List<Journey> journeys)
         {
             InitializeComponent();
-            dataGridJourneys.ItemsSource = journeys;
+            Journeys = journeys;
+            dataGridJourneys.ItemsSource = Journeys;
+        }
+
+        public void Refresh()
+        {
+            Journeys = new JourneyRepository().GetAll();
+            dataGridJourneys.ItemsSource = Journeys;
         }
 
         private void TextBoxFilterJourneys_TextChanged(object sender, TextChangedEventArgs e)

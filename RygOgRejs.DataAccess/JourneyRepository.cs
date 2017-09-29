@@ -25,7 +25,7 @@ namespace RygOgRejs.DataAccess
             {
                 object[] journeyData = ExtractRow(journeys.Tables[0].Rows[i]);
 
-                Journey journey = new Journey((Destination)journeyData[0], (DateTime)journeyData[1], (bool)journeyData[2], (int)journeyData[3], (int)journeyData[4], (double)journeyData[5]);
+                Journey journey = new Journey((int)journeyData[0], (Destination)journeyData[1], (DateTime)journeyData[2], (bool)journeyData[3], (int)journeyData[4], (int)journeyData[5], (double)journeyData[6]);
                 journeyList.Add(journey);
             }
 
@@ -43,7 +43,12 @@ namespace RygOgRejs.DataAccess
             DataRow row = dataSet.Tables[0].Rows[0];
             object[] journeyData = ExtractRow(executor.Execute($"SELECT * FROM dbo.Journeys WHERE JourneyId={row.Field<string>("JourneyId")}").Tables[0].Rows[0]);
 
-            return new Journey((Destination)journeyData[0], (DateTime)journeyData[1], (bool)journeyData[2], (int)journeyData[3], (int)journeyData[4], (double)journeyData[5]);
+            return new Journey((int)journeyData[0], (Destination)journeyData[1], (DateTime)journeyData[2], (bool)journeyData[3], (int)journeyData[4], (int)journeyData[4], (double)journeyData[5]);
+        }
+
+        public void Save(Journey journey)
+        {
+            executor.Execute($"INSERT INTO dbo.Journeys (Destination, DepartureTime, IsFirstClass, Adults, Children, LuggageAmount) VALUES('{journey.Destination.ToString()}', CAST('{journey.DepartureDate.Year}-{journey.DepartureDate.Month}-{journey.DepartureDate.Day}' AS DATETIME), {(journey.IsFirstClass ? 1 : 0)}, {journey.Adults}, {journey.Children}, {journey.LuggageAmount})");
         }
 
         /// <summary>
@@ -53,6 +58,7 @@ namespace RygOgRejs.DataAccess
         /// <returns>An array of extracted data</returns>
         protected object[] ExtractRow(DataRow row)
         {
+            int id = row.Field<int>("JourneyId");
             Destination destination = Destination.Billund;
             DateTime departureTime = row.Field<DateTime>("DepartureTime");
             bool isFirstClass = row.Field<bool>("IsFirstClass");
@@ -69,7 +75,7 @@ namespace RygOgRejs.DataAccess
                     break;
             }
 
-            return new object[6] { destination, departureTime, isFirstClass, adults, children, luggageAmount };
+            return new object[7] { id, destination, departureTime, isFirstClass, adults, children, luggageAmount };
         }
     }
 }

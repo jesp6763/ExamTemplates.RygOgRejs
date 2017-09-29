@@ -24,6 +24,6 @@
                   Grid.Row="1"
                   IsReadOnly="True"
                   Margin="5"
-                  x:FieldModifier="Public"/>
+                  x:FieldModifier="public"/>
     </Grid>
 </UserControl>

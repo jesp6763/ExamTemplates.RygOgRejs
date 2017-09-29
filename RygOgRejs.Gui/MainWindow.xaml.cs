@@ -50,26 +50,52 @@ namespace RygOgRejs.Gui
 
             // Instantiate AddJourney user control
             currentUserControlRight = new AddJourney();
-            userControlRight = currentUserControlRight;
+            userControlRight.Content = currentUserControlRight;
+            AddJourney addJourney = currentUserControlRight as AddJourney;
+            // Subscribe to OnClick event, on the create journey button
+            addJourney.opretBtn.Click += OpretBtn_Click;
+            // Subscribe to Destination event
+            addJourney.destinationDropdown.DropDownClosed += DestinationDropdown_DropDownClosed;
+        }
+
+        private void DestinationDropdown_DropDownClosed(object sender, EventArgs e)
+        {
+            AddJourney addJourney = currentUserControlRight as AddJourney;
+            labelStatusBar.Content = TemperatureService.GetTemperature(addJourney.destinationDropdown.SelectedItem as string);
+        }
+
+        private void OpretBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DataViewJourneys dataViewJourneys = currentUserControlCentre as DataViewJourneys;
+            dataViewJourneys.Journeys.Add(AddJourney.Journey);
+            dataViewJourneys.Refresh();
         }
 
         private void DataGridJourneys_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Get reference to datagrid
+            DataGrid dataGrid = (currentUserControlCentre as DataViewJourneys).dataGridJourneys;
+
             if(currentUserControlRight == null)
             {
-                //currentUserControlRight = new EditJourney(journey);
+                currentUserControlRight = new EditJourney(dataGrid.SelectedItem as Journey);
                 userControlRight.Content = currentUserControlRight;
             }
             else
             {
                 if(currentUserControlRight.GetType() == typeof(EditJourney))
                 {
-                    // Get reference to datagrid
-                    DataGrid dataGrid = (currentUserControlCentre as DataViewJourneys).dataGridJourneys;
-
-                    // Update data user control
+                    // Update data
                     EditJourney editJourney = currentUserControlRight as EditJourney;
                     editJourney.Update(dataGrid.SelectedItem as Journey);
+                }
+                else
+                {
+                    // Remove current content
+
+                    // Instantiate edit user control
+                    /*currentUserControlRight = new EditJourney(dataGrid.SelectedItem as Journey);
+                    userControlRight.Content = currentUserControlRight;*/
                 }
             }
         }
