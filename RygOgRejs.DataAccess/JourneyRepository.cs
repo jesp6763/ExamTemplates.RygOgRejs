@@ -24,7 +24,24 @@ namespace RygOgRejs.DataAccess
             for(int i = 0; i < journeys.Tables[0].Rows.Count; i++)
             {
                 DataRow row = journeys.Tables[0].Rows[i];
-                journeyList.Add(new Journey(row.Field<Destination>("Destination"), row.Field<DateTime>("DepartureTime"), row.Field<bool>("IsFirstClass"), row.Field<int>("Adults"), row.Field<int>("Children"), row.Field<double>("LuggageAmount")));
+                Destination destination = Destination.Billund;
+                DateTime departureTime = row.Field<DateTime>("DepartureTime");
+                bool isFirstClass = row.Field<bool>("IsFirstClass");
+                int adults = row.Field<int>("Adults"), children = row.Field<int>("Children");
+                double luggageAmount = (double)row.Field<decimal>("LuggageAmount");
+
+                switch(row.Field<string>("Destination"))
+                {
+                    case "Copenhagen":
+                        destination = Destination.Copenhagen;
+                        break;
+                    case "PalmaDeMallorca":
+                        destination = Destination.PalmaDeMallorca;
+                        break;
+                }
+
+                Journey journey = new Journey(destination, departureTime, isFirstClass, adults, children, luggageAmount);
+                journeyList.Add(journey);
             }
 
             return journeyList;
