@@ -30,16 +30,16 @@ namespace RygOgRejs.Entities
 
             switch(destination){
                 case Destination.Billund:
-                    adultDestinationPrice = 395;
-                    childDestinationPrice = 295;
+                    adultDestinationPrice = 395 * adults;
+                    childDestinationPrice = 295 * children;
                     break;
                 case Destination.Copenhagen:
-                    adultDestinationPrice = 1595;
-                    childDestinationPrice = 1395;
+                    adultDestinationPrice = 1595 * adults;
+                    childDestinationPrice = 1395 * children;
                     break;
                 case Destination.PalmaDeMallorca:
-                    adultDestinationPrice = 4995;
-                    childDestinationPrice = 3099;
+                    adultDestinationPrice = 4995 * adults;
+                    childDestinationPrice = 3099 * children;
                     break;
             }
 
@@ -62,7 +62,7 @@ namespace RygOgRejs.Entities
 
         public decimal GetTotalWithTax()
         {
-            return totalPrice * GetTaxAmount();
+            return totalPrice * taxRate;
         }
     }
 }
