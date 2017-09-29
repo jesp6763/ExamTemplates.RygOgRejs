@@ -1,5 +1,4 @@
-﻿using System;
-namespace RygOgRejs.DataAccess
+﻿namespace RygOgRejs.DataAccess
 {
     /// <summary>
     /// Represents a data repository
