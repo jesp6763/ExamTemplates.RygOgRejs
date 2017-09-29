@@ -65,7 +65,25 @@ namespace RygOgRejs.Entities
         /// Gets the id
         /// </summary>
         public int Id { get; }
-        public int Adults => adults;
+        /// <summary>
+        /// Gets or sets adults
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when attempting to set the value below 0</exception>
+        public int Adults
+        {
+            get => adults;
+            private set
+            {
+                if(value >= 0)
+                {
+                    adults = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
         public int Children => children;
 
         public Destination Destination => destination;
