@@ -65,6 +65,13 @@ namespace RygOgRejs.Entities
         /// Gets the id
         /// </summary>
         public int Id { get; }
+        public int Adults => adults;
+        public int Children => children;
+
+        public Destination Destination => destination;
+        public DateTime DepartureDate => departureDate;
+        public bool IsFirstClass => isFirstClass;
+        public double LuggageAmount => luggageAmount;
 
         /// <summary>
         /// Adds luggage
