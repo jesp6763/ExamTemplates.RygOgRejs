@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RygOgRejs.Services;
+using RygOgRejs.Entities;
+using RygOgRejs.DataAccess;
 
 namespace RygOgRejs.Gui
 {
@@ -24,13 +27,6 @@ namespace RygOgRejs.Gui
         public MainWindow()
         {
             InitializeComponent();
-
-            // TEST:
-            TestEntity t1 = new TestEntity { Prop1 = 1, Prop2 = "data her" };
-            TestEntity t2 = new TestEntity { Prop1 = 4, Prop2 = "data her og der og alle vegne" };
-            List<TestEntity> testEntities = new List<TestEntity>() { t1, t2 };
-            currentUserControlCentre = new DataViewJourneys(testEntities);
-            userControlCentre.Content = currentUserControlCentre;
         }
 
         private void OnMenuFilesClose_Click(object sender, RoutedEventArgs e)
@@ -42,11 +38,10 @@ namespace RygOgRejs.Gui
 
         private void ButtonJourneys_Click(object sender, RoutedEventArgs e)
         {
-            // TEST:
-            TestEntity t1 = new TestEntity { Prop1 = 1, Prop2 = "data her" };
-            TestEntity t2 = new TestEntity { Prop1 = 4, Prop2 = "data her og der og alle vegne" };
-            List<TestEntity> testEntities = new List<TestEntity>() { t1, t2 };
-            currentUserControlCentre = new DataViewJourneys(testEntities);
+
+            JourneyRepository repository = new JourneyRepository();
+            List<Journey> journeys = repository.GetAll();
+            currentUserControlCentre = new DataViewJourneys(journeys);
             userControlCentre.Content = currentUserControlCentre;
         }
 
