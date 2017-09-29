@@ -159,5 +159,20 @@ namespace RygOgRejs.Entities
             double extraLuggage = luggageAmount > 25 ? luggageAmount : 0;
             currentPriceDetails = new PriceDetails(destination, adults, children, isFirstClass, extraLuggage);
         }
+
+        public static Destination GetDestinationFromText(string destination)
+        {
+            switch(destination.Replace(" ", string.Empty))
+            {
+                case "Billund":
+                    return Destination.Billund;
+                case "Copenhagen":
+                    return Destination.Copenhagen;
+                case "PalmaDeMallorca":
+                    return Destination.PalmaDeMallorca;
+            }
+
+            return Destination.Billund;
+        }
     }
 }
