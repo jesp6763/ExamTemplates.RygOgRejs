@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RygOgRejs.Entities
 {
-    ´public interface IPersistable
+    public interface IPersistable
     {
         /// <summary>
         /// ID of the entity
