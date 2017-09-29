@@ -43,6 +43,35 @@ namespace RygOgRejs.Gui
             List<Journey> journeys = repository.GetAll();
             currentUserControlCentre = new DataViewJourneys(journeys);
             userControlCentre.Content = currentUserControlCentre;
+
+            // Subscribe to selection changed event
+            DataViewJourneys dataViewJourneys = userControlCentre.Content as DataViewJourneys;
+            dataViewJourneys.dataGridJourneys.SelectionChanged += DataGridJourneys_SelectionChanged;
+
+            // Instantiate AddJourney user control
+            currentUserControlRight = new AddJourney();
+            userControlRight = currentUserControlRight;
+        }
+
+        private void DataGridJourneys_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(currentUserControlRight == null)
+            {
+                //currentUserControlRight = new EditJourney(journey);
+                userControlRight.Content = currentUserControlRight;
+            }
+            else
+            {
+                if(currentUserControlRight.GetType() == typeof(EditJourney))
+                {
+                    // Get reference to datagrid
+                    DataGrid dataGrid = (currentUserControlCentre as DataViewJourneys).dataGridJourneys;
+
+                    // Update data user control
+                    EditJourney editJourney = currentUserControlRight as EditJourney;
+                    editJourney.Update(dataGrid.SelectedItem as Journey);
+                }
+            }
         }
 
         private void MenuHelpAbout_Click(object sender, RoutedEventArgs e)
