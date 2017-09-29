@@ -1,0 +1,153 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RygOgRejs.Gui"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             x:Class="RygOgRejs.Gui.AddJourney"
+             mc:Ignorable="d"
+             d:DesignHeight="340"
+             d:DesignWidth="258">
+    <Grid>
+        <GroupBox Header="Rejse"
+                  Height="168"
+                  Margin="0,1,0,0"
+                  VerticalAlignment="Top"
+                  BorderThickness="0,1">
+            <Grid>
+                <Label Content="Destination:"
+                       HorizontalAlignment="Left"
+                       Margin="10,1,0,0"
+                       VerticalAlignment="Top" />
+                <ComboBox x:Name="destinationDropdown"
+                          Margin="94,5,8,0"
+                          VerticalAlignment="Top"
+                          SelectedIndex="0">
+                    <System:String>Billund</System:String>
+                    <System:String>Copenhagen</System:String>
+                    <System:String>Palma De Mallorca</System:String>
+                </ComboBox>
+                <Label Content="Antal voksne:"
+                       HorizontalAlignment="Left"
+                       Margin="10,52,0,0"
+                       VerticalAlignment="Top" />
+                <TextBox x:Name="adultsTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="95,55,0,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="32"
+                         Text="0" />
+                <Label Content="Antal børn:"
+                       HorizontalAlignment="Right"
+                       Margin="0,51,45,0"
+                       VerticalAlignment="Top" />
+                <TextBox x:Name="childrenTextbox"
+                         HorizontalAlignment="Right"
+                         Height="23"
+                         Margin="0,55,8,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="32"
+                         Text="0" />
+                <Label Content="Baggage (kg)"
+                       HorizontalAlignment="Left"
+                       Margin="10,83,0,0"
+                       VerticalAlignment="Top" />
+                <TextBox x:Name="luggageTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="95,86,0,0"
+                         TextWrapping="Wrap"
+                         Text="0"
+                         VerticalAlignment="Top"
+                         Width="143" />
+                <CheckBox x:Name="firstClassCheckbox"
+                          Content="1. klasse"
+                          HorizontalAlignment="Left"
+                          Margin="95,32,0,0"
+                          VerticalAlignment="Top" />
+                <DatePicker x:Name="departureDate"
+                            Margin="94,114,8,0"
+                            VerticalAlignment="Top" />
+                <Label Content="Afgangsdato"
+                       HorizontalAlignment="Left"
+                       Margin="10,114,0,0"
+                       VerticalAlignment="Top"
+                       Width="79" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Betaler"
+                  HorizontalAlignment="Left"
+                  Height="135"
+                  Margin="0,169,0,0"
+                  VerticalAlignment="Top"
+                  Width="258"
+                  BorderThickness="0,1">
+            <Grid Margin="0,-5,-7,-2">
+                <Label Content="Fornavn:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="0,3,0,0" />
+                <TextBox x:Name="fornavnTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="67,6,0,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="176"
+                         BorderThickness="0,1,1,1" />
+                <Label Content="Efternavn:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="0,31,0,0" />
+                <TextBox x:Name="efternavnTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="67,34,0,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="176"
+                         BorderThickness="0,1,1,1" />
+                <Label Content="Email:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="0,60,0,0" />
+                <TextBox x:Name="emailTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="67,63,0,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="176"
+                         BorderThickness="0,1,1,1" />
+                <Label Content="Telefon:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="0,88,0,0" />
+                <TextBox x:Name="telefonTextbox"
+                         HorizontalAlignment="Left"
+                         Height="23"
+                         Margin="67,91,0,0"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         Width="176"
+                         BorderThickness="0,1,1,1" />
+            </Grid>
+        </GroupBox>
+        <Button x:Name="opretBtn"
+                Content="Opret Rejse"
+                HorizontalAlignment="Left"
+                Margin="175,310,0,0"
+                VerticalAlignment="Top"
+                Width="73"
+                Click="CreateJourneyButton" />
+        <Label x:Name="totalPrisLbl"
+               Content="Total pris: 0kr"
+               HorizontalAlignment="Left"
+               Margin="10,305,0,0"
+               VerticalAlignment="Top" />
+
+    </Grid>
+</UserControl>
