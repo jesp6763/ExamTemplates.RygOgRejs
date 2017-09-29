@@ -26,7 +26,7 @@ namespace RygOgRejs.Entities
 
             decimal childDestinationPrice = 0;
             decimal adultDestinationPrice = 0;
-            double extraLuggagePrice = 290;
+            double extraLuggagePrice = 290 * extraLuggage;
 
             switch(destination){
                 case Destination.Billund:
@@ -43,7 +43,7 @@ namespace RygOgRejs.Entities
                     break;
             }
 
-            totalPrice = childDestinationPrice + adultDestinationPrice + (decimal)(extraLuggagePrice * extraLuggage);
+            totalPrice = childDestinationPrice + adultDestinationPrice + (decimal)extraLuggagePrice;
             if(isFirstClass)
             {
                 totalPrice += 1699; // Increase total price by 1699 (The first class price)
